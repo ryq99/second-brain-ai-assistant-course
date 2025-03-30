@@ -1,7 +1,8 @@
 from loguru import logger
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+import os
+print(os.listdir())
 
 class Settings(BaseSettings):
     """

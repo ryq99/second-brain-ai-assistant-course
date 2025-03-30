@@ -89,7 +89,7 @@ class NotionDatabaseClient:
             A PageMetadata object containing the processed page data.
         """
         properties = self.__flatten_properties(page.get("properties", {}))
-        title = properties.pop("Name")
+        title = properties.pop("Name", "N/A")
 
         if page.get("parent"):
             properties["parent"] = {

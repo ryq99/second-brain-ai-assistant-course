@@ -41,11 +41,23 @@ def etl(
     if to_s3:
         upload_to_s3(
             folder_path=crawled_data_dir,
-            s3_prefix="second_brain_course/crawled",
+            s3_prefix="data/crawled",
             after="save_documents_to_disk",
         )
-    ingest_to_mongodb(
-        models=enhanced_documents,
-        collection_name=load_collection_name,
-        clear_collection=True,
+    #ingest_to_mongodb(
+    #    models=enhanced_documents,
+    #    collection_name=load_collection_name,
+    #    clear_collection=True,
+    #)
+
+
+if __name__ == "__main__":
+    
+    etl(
+        data_dir=Path("data/"),
+        load_collection_name="",
+        to_s3=True,
+        max_workers=10,
+        quality_agent_model_id="gpt-4o-mini",
+        quality_agent_mock=True,
     )

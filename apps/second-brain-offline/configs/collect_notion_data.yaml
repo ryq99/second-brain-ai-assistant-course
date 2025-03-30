@@ -1,5 +1,5 @@
 parameters:
   database_ids:
-    - your_database_id
+    - 7a124ce96fb24046bf0d99ad7b18c8ab
   data_dir: data/
   to_s3: false

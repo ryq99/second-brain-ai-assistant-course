@@ -10,7 +10,7 @@ from steps.collect_notion_data import (
 from steps.infrastructure import save_documents_to_disk, upload_to_s3
 
 
-@pipeline
+@pipeline(enable_cache=False)
 def collect_notion_data(
     database_ids: list[str], data_dir: Path, to_s3: bool = False
 ) -> None:
@@ -35,3 +35,12 @@ def collect_notion_data(
             s3_prefix="second_brain_course/notion",
             after=invocation_ids,
         )
+
+
+if __name__ == "__main__":
+    
+    collect_notion_data(
+        database_ids=["1c5aa602dccd80e0ae0dd325af55aa5a"], 
+        data_dir=Path("./data"), 
+        to_s3=False,
+    )
